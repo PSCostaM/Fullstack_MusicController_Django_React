@@ -1,8 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import generics
+from .serializers import RoomSerializer
+from .models import Room
 
-# create the endpoints
 
-def main(request):
-    return HttpResponse("<h1>Music Controller</h1>")
+
+class RoomView(generics.CreateAPIView):
+    quieryset = Room.objects.all()
+    serializer_class = RoomSerializer
     
